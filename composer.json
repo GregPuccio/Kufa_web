@@ -6,6 +6,7 @@
     "require": {
         "bcosca/fatfree-core": "^3.6",
         "vlucas/phpdotenv": "^2.5",
+        "php": "^7.4.0",
         "ext-pdo": "*",
         "monolog/monolog": "^1.24",
         "ext-json": "^1.5",

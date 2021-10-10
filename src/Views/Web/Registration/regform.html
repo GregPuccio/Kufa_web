@@ -1,0 +1,155 @@
+<section>
+    <div class="content">
+        <h1 class="has-text-centered">{{ @EVENT.event_form_title}}</h1>
+        <check if="{{ trim(@EVENT.event_html) != ''}}">
+            {{ @EVENT.event_html | raw}}
+        </check>
+    </div>
+    <include href="Web/_alerts.html"></include>
+    <form id="theForm" method="POST">
+        {{ @CSRF_TAG | raw }}
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label for="firstname" class="label">Attendee's First Name</label>
+                    <div class="control">
+                        <input type="text" class="input" name="form[firstname]" minlength="2" required id="firstname">
+                    </div>
+                    <label for="firstname" class="help"></label>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label for="lastname" class="label">Attendee's Last Name</label>
+                    <div class="control">
+                        <input id="lastname" type="text" class="input" name="form[last]" minlength="2" required>
+                    </div>
+                    <label for="lastname" class="help"></label>
+                </div>
+            </div>
+        </div>
+        <check if="{{ @EVENT.event_has_parents }}">
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label for="parentfirst" class="label">Parent's First Name</label>
+                        <div class="control">
+                            <input id="parentfirst" type="text" class="input" name="form[parentfirst]" minlength="2" required>
+                        </div>
+                        <label for="parentfirst" class="help"></label>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <label for="parentlast" class="label">Parent's Last Name</label>
+                        <div class="control">
+                            <input id="parentlast" type="text" class="input" name="form[parentlast]" minlength="2" required>
+                        </div>
+                        <label for="parentlast" class="help"></label>
+                    </div>
+                </div>
+            </div>
+        </check>
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label for="email" class="label">Email Address</label>
+                    <div class="control">
+                        <input id="email" type="email" class="input" name="form[email]" required>
+                    </div>
+                    <label for="email" class="help"></label>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label for="telephone" class="label">Telephone</label>
+                    <div class="control">
+                        <input id="telephone" type="tel" class="input" name="form[phone]" required>
+                    </div>
+                    <label for="telephone" class="help"></label>
+                </div>
+            </div>
+        </div>
+        <check if="{{ @EVENT_DAYS }}">
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label id="days-label" class="label">Days to Attend</label>
+                    </div>
+                    <repeat group="{{@EVENT_DAYS}}" value="{{@day}}">
+                        <div class="field">
+                            <input type="checkbox" id="cb_{{@day.ed_id}}" required
+                                class="is-checkradio" name="form[days][]"
+                                {{ @day.ed_count>= @day.ed_limit || @day.ed_disabled ? 'disabled' : '' }}
+                            value="{{@day.ed_id}}"> <label class="checkbox" for="cb_{{@day.ed_id}}">
+                            <!-- @formatter:off -->
+                            {{ strftime('%A, %B %e, %Y', strtotime(@day.ed_date))}}
+                            <!-- @formatter:on -->
+                            <check if="{{ @day.ed_count >= @day.ed_limit || @day.ed_disabled }}">
+                                <span style="color:red;font-weight:bold">Session is full.</span>
+                            </check>
+                        </label>
+                        </div>
+                    </repeat>
+                </div>
+            </div>
+        </check>
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label for="comments" class="label">Comments</label>
+                    <div class="control">
+                        <textarea id="comments" name="form[comments]" class="textarea"></textarea>
+                    </div>
+                    <label for="comments" class="help"></label>
+                </div>
+            </div>
+        </div>
+        <div class="block has-text-centered">
+            <button class="button is-medium is-primary" type="submit">Submit</button>&nbsp;
+        </div>
+    </form>
+    {*
+    <b-loading :active.sync="isLoading" :canCancel="false"></b-loading>
+    *}
+</section>
+<script>
+$(function () {
+    $('#theForm').validate({
+        errorClass: 'help',
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-danger').removeClass(validClass);
+            $(element).closest('.field').find('.help').addClass('is-danger');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-danger').addClass(validClass);
+            $(element).closest('.field').find('.help').removeClass('is-danger');
+        },
+        invalidHandler: function () {
+            bulmaToast.toast({
+                message: "Please check the form for missing values.",
+                type: "is-danger",
+                position: 'bottom-right',
+                closeOnClick: true,
+                dismissible: true,
+                animate: {
+                    in: 'slideInUp',
+                    out: 'slideOutDown'
+                }
+            });
+        },
+        errorPlacement: function (error, element) {
+            if (element.hasClass('is-checkradio')) {
+                error.insertAfter("#days-label");
+                error.addClass('is-danger');
+            } else {
+                error.insertAfter(element);
+            }
+        },
+    });
+
+    $('.delete').on('click', function () {
+        $(this).closest('.notify-wrapper').remove();
+    });
+});
+</script>

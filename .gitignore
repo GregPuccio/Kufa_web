@@ -1,0 +1,13 @@
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.idea
+.env
+/vendor
+/tmp/*
+/node_modules
+/wwwroot
+/assets/css

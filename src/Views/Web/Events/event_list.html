@@ -1,0 +1,38 @@
+<include href="Web/_alerts.html"></include>
+<div class="section">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Registrants</th>
+            <th>Days</th>
+        </tr>
+        </thead>
+        <tbody>
+        <repeat group="{{ @RS.events }}" value="{{ @ev }}">
+            <tr>
+                <td><a href="{{ 'event',['id'=>@ev.event_id] | alias }}">{{@ev.event_name}}</a></td>
+                <td>{{ @ev.registrants }}</td>
+                <td>
+                    <check if="{{ @ev.event_has_dates }}">
+                        <true>
+                            <table class="table is-narrow">
+                                <repeat group="{{@ev.days}}" value="{{@day}}">
+                                    <tr>
+                                        <td>{{@day.ed_date}}</td>
+                                        <td>{{@day.ed_count}}/{{@day.ed_limit}}</td>
+                                        <td>{{ @day.ed_disabled ? 'DISABLED' : ''}}</td>
+                                    </tr>
+                                </repeat>
+                            </table>
+                        </true>
+                        <false>
+                            N/A
+                        </false>
+                    </check>
+                </td>
+            </tr>
+        </repeat>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,95 @@
+<style>
+    .table tr.reginfo.no-border td {
+        border-bottom-width: 0 !important;
+    }
+</style>
+<div class="section">
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Event Name</th>
+            <td>{{@RS.event.event_name}}</td>
+        </tr>
+        <tr>
+            <th>Registration Period</th>
+            <td>
+                <!-- @formatter:off -->
+                {{ strftime('%A, %B %e, %Y', strtotime(@RS.event.event_pub_start))}} &mdash;
+                {{ strftime('%A, %B %e, %Y', strtotime(@RS.event.event_pub_end))}}
+                <!-- @formatter:on -->
+            </td>
+        </tr>
+        <tr>
+            <th>Collect Parent Info?</th>
+            <td>{{ @RS.event.event_has_parents ? 'YES' : 'NO'}}</td>
+        </tr>
+        <check if="{{ @RS.event.event_has_dates}}">
+            <tr>
+                <th>Dates</th>
+                <td>
+                    <table class="table is-narrow">
+                        <tbody>
+                        <repeat group="{{ @RS.days }}" value="{{@day}}">
+                            <tr>
+                                <td>{{ strftime('%A, %B %e, %Y', strtotime(@day.ed_date))}}</td>
+                                <td>{{@day.ed_count}}/{{@day.ed_limit}}</td>
+                            </tr>
+                        </repeat>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </check>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Attendee
+                <check if="{{@RS.event.event_has_parents}}">
+                    / Parent
+                </check>
+            </th>
+            <th>Email/Phone</th>
+            <check if="{{ @RS.event.event_has_dates }}">
+                <true>
+                    <th>Days</th>
+                </true>
+                <false>
+                    <th>&nbsp;</th>
+                </false>
+            </check>
+            <th>Registered</th>
+        </tr>
+        </thead>
+        <tbody>
+        <repeat group="{{ @RS.reg }}" value="{{ @reg }}">
+            <tr class="reginfo {{ trim(@reg.er_comments) != '' ? 'no-border' : ''}}">
+                <td>{{ @reg.er_first}} {{@reg.er_last}}
+                    <check if="{{@RS.event.event_has_parents}}">
+                        <br/>{{@reg.er_parent_first}} {{@reg.er_parent_last}}
+                    </check>
+                </td>
+                <td><a href="mailto:{{ @reg.er_email }}">{{ @reg.er_email }}</a><br/>
+                    <a href="tel:{{@reg.er_phone}}">{{@reg.er_phone}}</a></td>
+                <check if="{{ @RS.event.event_has_dates }}">
+                    <td>
+                        <repeat group="{{@reg.days}}" value="@date">
+                            {{ strftime('%A, %B %e, %Y', strtotime(@date))}}<br/>
+                        </repeat>
+                    </td>
+                </check>
+                <td>{{@reg.er_added}}</td>
+            </tr>
+            <check if="{{ trim(@reg.er_comments) != ''}}">
+                <tr>
+                    <td colspan="4" style="padding-left:30px;padding-right:30px">
+                        <i>{{ nl2br(htmlspecialchars(@reg.er_comments))}}</i>
+                    </td>
+                </tr>
+            </check>
+        </repeat>
+        </tbody>
+    </table>
+</div>

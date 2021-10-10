@@ -1,0 +1,44 @@
+<check if="{{ \App\Utility\Flash::instance()->hasMessages() }}">
+    <repeat group="{{ \App\Utility\Flash::instance()->getMessages() }}" value="{{ @msg }}">
+        <check if="{{ @msg.toast }}">
+            <true>
+                <script>
+                $(function () {
+
+                    bulmaToast.toast({
+                        message: "{{@msg.text}}",
+                        type: "{{@msg.status}}",
+                        position: 'bottom-right',
+                        duration: 3000,
+                        closeOnClick: true,
+                        dismissible: true,
+                        animate: {
+                            in: 'fadeInUp',
+                            out: 'fadeOutDown'
+                        }
+                    });
+                });
+                </script>
+            </true>
+            <false>
+                <div class="columns notify-wrapper">
+                    <div class="column">
+                        <div class="notification {{@msg.status}}">
+                            <button class="delete"></button>
+                            {{@msg.text}}
+                        </div>
+                    </div>
+                </div>
+            </false>
+        </check>
+
+    </repeat>
+</check>
+<script>
+$(function () {
+    $('.delete').on('click', function () {
+        $(this).closest('.notify-wrapper').remove();
+    });
+
+});
+</script>

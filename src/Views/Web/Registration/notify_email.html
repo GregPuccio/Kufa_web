@@ -1,0 +1,37 @@
+<div>
+    {{@EVENT.event_name}}<br/> Received {{ strftime('%m/%d/%Y %H:%M') }}
+</div>
+<table>
+    <tr>
+        <td>Student:</td>
+        <td>{{ @REG.er_first}} {{ @REG.er_last }}</td>
+    </tr>
+    <check if="{{@EVENT.event_has_parents}}">
+        <tr>
+            <td>Parent:</td>
+            <td>{{ @REG.er_parent_first}} {{ @REG.er_parent_last }}</td>
+        </tr>
+    </check>
+    <tr>
+        <td>Email:</td>
+        <td>{{ @REG.er_email }}</td>
+    </tr>
+    <tr>
+        <td>Phone:</td>
+        <td>{{ @REG.er_phone}}</td>
+    </tr>
+    <check if="{{@EVENT.event_has_dates}}">
+        <tr>
+            <td>Days:</td>
+            <td>
+                <repeat group="{{@REG.days}}" value="{{@date}}">
+                    {{ strftime('%A, %B %e, %Y', strtotime(@date))}}<br/>
+                </repeat>
+            </td>
+        </tr>
+    </check>
+    <tr>
+        <td>Comments:</td>
+        <td>{{ nl2br(htmlspecialchars(@REG.er_comments)) | raw }}</td>
+    </tr>
+</table>

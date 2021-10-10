@@ -1,0 +1,68 @@
+<section class="section">
+    <check if="{{ \App\Utility\Flash::instance()->hasMessages() }}">
+        <repeat group="{{ \App\Utility\Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="columns notify-wrapper">
+                <div class="column">
+                    <div class="notification {{@msg.status}}">
+                        <button class="delete"></button>
+                        {{@msg.text}}
+                    </div>
+                </div>
+            </div>
+        </repeat>
+    </check>
+    <form id="theForm" method="POST">
+        <div class="field" style="width:300px;">
+            <label for="email" class="label">Email Address</label>
+            <div class="control">
+                <input type="email" class="input" name="form[email]" placeholder="Email" required id="email">
+            </div>
+            <label for="email" class="help"></label>
+        </div>
+        <div class="field" style="width:300px;">
+            <label for="password" class="label">Password</label>
+            <div class="control">
+                <input id="password" type="password" class="input" placeholder="Password" name="form[password]" required>
+            </div>
+            <label for="password" class="help"></label>
+        </div>
+        <div class="block">
+            <button class="button is-medium is-primary" type="submit">Login</button>&nbsp;
+        </div>
+
+    </form>
+</section>
+
+<script>
+$(function () {
+    $('#theForm').validate({
+        errorClass: 'help',
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-danger').removeClass(validClass);
+            $(element).closest('.field').find('.help').addClass('is-danger');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-danger').addClass(validClass);
+            $(element).closest('.field').find('.help').removeClass('is-danger');
+        },
+        invalidHandler: function () {
+            bulmaToast.toast({
+                message: "Please check the form for missing values.",
+                type: "is-danger",
+                position: 'bottom-right',
+                closeOnClick: true,
+                dismissible: true,
+                animate: {
+                    in: 'slideInUp',
+                    out: 'slideOutDown'
+                }
+            });
+        },
+    });
+
+    $('.delete').on('click', function () {
+        $(this).closest('.notify-wrapper').remove();
+    });
+});
+
+</script>

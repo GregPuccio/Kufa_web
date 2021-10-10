@@ -1,0 +1,95 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/"><img src="/assets/img/logo_wt_1.jpg" style="height:4rem" alt=""> <b>Kaprica
+                United</b></a> <a href="/" data-slug="home" class="navbar-item">Home</a>
+        <a role="button" class="navbar-burger burger" data-target="navbar-menu"> <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> About Us </a>
+                <div class="navbar-dropdown">
+                    <a href="{{ 'content', ['slug'=>'mission'] | alias }}" data-slug='mission' class="navbar-item">
+                        Mission Statement </a>
+                    <a href="{{ 'content', ['slug'=>'staff'] | alias }}" data-slug='staff' class="navbar-item">
+                        Staff </a>
+                    <a href="{{ 'content', ['slug'=>'achievements'] | alias }}" data-slug='achievements'
+                        class="navbar-item">
+                        Achievements </a>
+                    <a href="{{ 'content', ['slug'=>'news'] | alias }}" data-slug='news' class="navbar-item"> News and
+                        Results</a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> Our Programs </a>
+                <div class="navbar-dropdown">
+                    <check if="false">
+                        <a href="{{ 'regform', ['slug'=>'preseason2021'] | alias }}" data-slug='reg/preseason2021'
+                            class="navbar-item">Pre-Season Camp 2021</a>
+                        <a href="{{ 'regform', ['slug'=>'foundation2021'] | alias }}" data-slug='reg/foundation2021'
+                            class="navbar-item">Foundation Camp (ages 7-11)</a>
+                    </check>
+
+                    <a href="{{ 'content', ['slug'=>'covenant2020'] | alias }}" data-slug='covenant2020'
+                        class="navbar-item">Community
+                        Covenant</a>
+                    <a href="{{ 'content', ['slug'=>'covidwaiver'] | alias }}" data-slug='covidwaiver'
+                        class="navbar-item">COVID Waiver</a>
+                    <a href="{{ 'content', ['slug'=>'schedule'] | alias }}" data-slug='schedule'
+                        class="navbar-item">Class
+                        Schedule</a>
+                    <a class="navbar-item"
+                        href="https://squareup.com/appointments/book/MA7066BY3JRDQ/kaprica-united-fencing-academy-warren-nj"
+                        target="_kufa_square">
+                        Book Lessons&nbsp;
+                        <i class="fas fa-external-link-alt " style="font-size:75%;padding-top:0px"></i></a>
+                    <a href="{{ 'content', ['slug'=>'classes'] | alias }}" data-slug='classes' class="navbar-item">Class
+                        Descriptions</a>
+                    <a href="{{ 'content', ['slug'=>'fees'] | alias }}" data-slug='fees' class="navbar-item">Fees and
+                        Benefits</a>
+                    <a href="{{ 'content', ['slug'=>'regforms'] | alias }}" data-slug='regforms'
+                        class="navbar-item">Registration
+                        Forms</a>
+                </div>
+            </div>
+            <a href="{{ 'content', ['slug'=>'competition'] | alias }}" data-slug='competition'
+                class="navbar-item">Competition
+                101</a> <a href="{{ 'content', ['slug'=>'contact'] | alias }}" data-slug='contact'
+                class="navbar-item">Contact
+                Us</a> <a href="{{ 'content', ['slug'=>'gallery'] | alias }}" data-slug='gallery'
+                class="navbar-item">Gallery</a>
+            <a class="navbar-item" href="https://fb.com/kapricaunited" target="_blank">
+                <i class="fab fa-facebook-f"></i> </a>
+            <a class="navbar-item" href="https://www.instagram.com/kapricaunited" target="_blank">
+                <i class="fab fa-instagram"></i> </a>
+
+        </div>
+    </div>
+</nav>
+<check if="{{ @SESSION.user.u_id}}">
+    <div class="container">
+        Welcome {{@SESSION.user.u_display_name}}!
+        <a class="button is-primary is-small" href="{{ 'events' | alias }}">Events</a>
+        <a class="button is-danger is-small" href="{{ 'logout' | alias }}">Logout</a>
+        <br />&nbsp;
+    </div>
+</check>
+
+<script>
+    $(function () {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").on('click', function () {
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+
+        });
+        if ('{{@TEMPLATE.slug}}' !== '') {
+            $('a[data-slug="{{@TEMPLATE.slug}}"]').addClass('is-active');
+            // console.log('Slug!', '{{@TEMPLATE.slug}}');
+        }
+    });
+</script>

@@ -1,0 +1,81 @@
+<check if="{{ \App\Utility\Flash::instance()->hasMessages() }}">
+    <include href="Web/_alerts.html"></include>
+</check>
+<style>
+    .level.events .message {
+        margin: 0 15px 15px 15px;
+    }
+</style>
+<div class="kufa-section">
+    <div class="has-text-centered">
+        <h1 class="is-size-2">Kaprica United Fencing Academy</h1>
+        1EA Chimney Rock Rd, Suite. 2, Bridgewater NJ<br />
+        &nbsp;
+    </div>
+
+    <div class="has-text-centered" style="margin-bottom:48px">
+        <p style="font-size:24px;font-weight:bold;margin-bottom:20px">
+            <a target="_blank" href="https://www.signupgenius.com/go/70A0A44A8AE2BA5FC1-kufa2">October Signup</a><br />
+            <a target="_blank" href="https://square.site/book/MA7066BY3JRDQ/kaprica-united-fencing-academy-bridgewater-nj">Private Lesson Booking for All Coaches</a>
+        </p>
+    </div>
+
+<check if="false">
+    <div class="box">
+        <div class="title">Upcoming Events</div>
+        <div class="columns events is-centered">
+
+            <div class="column">
+                <article class="message is-primary">
+                    <div class="message-header  has-text-centered">
+                        <p>Pre-Season Camp 2021</p>
+                    </div>
+                    <div class="message-body has-text-centered">
+                        <p>August 17-21, 9:30-3:30, 45-60 minute break at 12:00</p>
+                        {* <p>Cost $110 per day, $500 for all 5 days PREPAID</p> *}
+                        <p>&nbsp;</p>
+
+                        <p><a class="button" href="{{ 'regform', ['slug'=>'preseason2021'] | alias }}">More
+                                Information</a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="column">
+                <article class="message is-primary">
+                    <div class="message-header  has-text-centered">
+                        <p>Foundation Camp (ages 7-11)</p>
+                    </div>
+                    <div class="message-body has-text-centered">
+                        <p>August 9-13, 10-2:30 PM, 30 minute break at noon</p>
+                        {* <p>Cost, $75 per day, $340 all days, PREPAID</p> *}
+                        <p>&nbsp;</p>
+
+                        <p><a class="button" href="{{ 'regform', ['slug'=>'foundation2021'] | alias }}">More
+                                Information</a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+
+        </div>
+    </div>
+</check>
+
+    <div class="columns is-centered">
+        <div class="column is-two-thirds has-text-centered">
+            <img src="../assets/img/logo_wt_1.jpg" style="width:300px;" width="300">
+        </div>
+    </div>
+    <div class="columns is-centered is-desktop">
+        <div class="column has-text-centered image-pane">
+            <div class="image">
+                <img src="/assets/img/kufa_2019.jpg">
+            </div>
+            <div class="image-pane-caption"></div>
+        </div>
+
+    </div>
+</div>

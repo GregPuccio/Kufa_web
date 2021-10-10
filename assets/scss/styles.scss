@@ -1,0 +1,225 @@
+@charset "utf-8";
+// @import "../../node_modules/bulma/bulma.sass";
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Subrayada');
+// bulma customizations here
+$navbar-height: 4rem;
+$navbar-item-img-max-height: 3.5rem;
+$family-sans-serif: 'Montserrat', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+/* lighter blue from new white background logo */
+$kaprica-blue: #0f377c;
+$kaprica-blue-2: #096ba6;
+
+$primary: $kaprica-blue-2;
+
+$theme-colors: (
+        "primary": $primary
+);
+
+@import "../../node_modules/bulma/sass/utilities/_all";
+@import "../../node_modules/bulma/bulma";
+
+$navbar-light-color: rgba(#000, .5);
+$navbar-light-hover-color: rgba(#000, .7);
+$navbar-light-active-color: rgba(#000, .9);
+$navbar-light-disabled-color: rgba(#000, .3);
+$navbar-light-toggler-border-color: rgba($primary, .1);
+
+//    $font-family-sans-serif: 'Montserrat', sans-serif;
+
+.kufa-section {
+  .section-title {
+    background-color: $primary;
+    padding: 9px 15px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Montserrat Subrayada', sans-serif;
+  }
+  .section-quote {
+    font-style: italic;
+    font-size: 125%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .title-font {
+    font-family: 'Montserrat Subrayada', sans-serif;
+  }
+
+  p.spaced {
+    margin: 1em 1em;
+  }
+
+  table.section-achievement {
+    td {
+      padding: 2px 15px;
+    }
+  }
+
+  table.table-schedule {
+    margin-left: auto;
+    margin-right: auto;
+    td {
+      text-align: center;
+      vertical-align: middle;
+      font-size: 11px;
+      font-weight: bold;
+      border-right-width: 1px;
+      border-left-width: 1px;
+    }
+    tbody tr:last-child td, tbody tr:last-child th, tbody tr:first-child td, tbody tr:first-child th{
+      border-bottom-width: 1px;
+    }
+    tbody tr:first-child td, tbody tr:first-child th{
+      border-top-width: 1px;
+    }
+
+    .youth {
+      background-color: #1155cc;
+      color: white;
+
+    }
+    .lessons {
+      background-color: #9fc5e8;
+      color: black;
+    }
+
+    .advanced {
+      background-color: #0000ff;
+      color: white
+    }
+    .advancedf {
+      background-color: #9900ff;
+      color: white
+    }
+
+    .transition {
+      background-color: #fff2cc;
+      color: black;
+    }
+
+    .fundamentals {
+      background-color: #c9daf8;
+      color: black;
+    }
+
+    .comp {
+      background-color: #01ffff;
+      color: black;
+    }
+
+    .footwork {
+      background-color: #d9d2e9;
+      color: black;
+    }
+
+    .bouting {
+      background-color: #6fa8dc;
+      color: black;
+    }
+
+    .closed {
+      background-color: black;
+      color: white;
+    }
+    .clash {
+      background-color: limegreen;
+    }
+  }
+
+  table.table-fees {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    td, th {
+      text-align: center;
+      vertical-align: middle;
+    }
+    td:first-child {
+      text-align: left;
+    }
+    th {
+      font-weight: bold;
+    }
+  }
+
+  i.fas {
+    font-size: 90%;
+  }
+
+}
+
+.concept1 {
+  background-color: $kaprica-blue;
+}
+
+.image-pane {
+  margin-bottom: 30px;
+  .image-pane-caption {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 9px;
+    color: $kaprica-blue;
+  }
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+@import '../../node_modules/animate.css/animate.min.css';
+
+.kufa-carousel {
+  .carousel-item {
+    background-color: $primary;
+    height: 400px;
+  }
+  .carousel-item > div {
+    text-align: center;
+    max-height: 400px;
+
+    img {
+      max-height: 400px;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+.quick-links {
+  border: 1px solid $primary;
+  padding: 10px 15px;
+  position: fixed;
+  top: 75px;
+  z-index: 100;
+}
+
+.embed-responsive {
+  position: relative;
+  // display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  height: 0;
+
+  iframe, .embed-responsive-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+
+  }
+}
+
+
+@import "carousel";
+@import "../../node_modules/bulma-checkradio/src/sass/index";

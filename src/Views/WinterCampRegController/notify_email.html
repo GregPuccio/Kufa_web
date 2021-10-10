@@ -1,0 +1,30 @@
+<div>
+    Winter Camp 2018 Registration<br />
+    Received {{ strftime('%m/%d/%Y %H:%M') }}
+</div>
+<table>
+    <tr>
+        <td>Student:</td>
+        <td>{{ @RS.firstname}} {{ @RS.lastname }}</td>
+    </tr>
+    <tr>
+        <td>Parent:</td>
+        <td>{{ @RS.parentFirst}} {{ @RS.parentLast }}</td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td>{{ @RS.email }}</td>
+    </tr>
+    <tr>
+        <td>Phone:</td>
+        <td>{{ @RS.phone}}</td>
+    </tr>
+    <tr>
+        <td>Days:</td>
+        <td>{{ implode(', ', @RS.days) }}</td>
+    </tr>
+    <tr>
+        <td>Comments:</td>
+        <td>{{ nl2br(htmlspecialchars(@RS.comments)) | raw }}</td>
+    </tr>
+</table>

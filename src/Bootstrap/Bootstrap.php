@@ -27,7 +27,7 @@ class Bootstrap
      */
     public static function init()
     {
-        self::initEnvironment();
+        // self::initEnvironment(); commented out to stop initializing .env
         self::initFatFree();
 
         // Load the routes

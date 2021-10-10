@@ -6,7 +6,6 @@
 
 .idea
 .env
-/vendor
 /tmp/*
 /node_modules
 /wwwroot

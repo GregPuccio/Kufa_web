@@ -1,5 +1,5 @@
 {
-    "name": "richardgoldstein/kufaapi",
+    "name": "gregpuccio/kufa_web",
     "description": "Back-end API for kapricaunited.com",
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -17,6 +17,10 @@
     "require-dev": {
     },
     "authors": [
+        {
+            "name": "Greg Puccio",
+            "email": "gregpuccio@gmail.com"
+        },
         {
             "name": "Rich Goldstein",
             "email": "rgoldstein@cancerexpertnow.com"

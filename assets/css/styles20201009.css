@@ -6609,7 +6609,7 @@ html.has-navbar-fixed-bottom, body.has-navbar-fixed-bottom {
 }
 
 .navbar-menu {
-    display: none;
+    display: none
 }
 
 .navbar-item, .navbar-link {
@@ -6822,13 +6822,13 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
         flex-shrink: 0
     }
     .navbar-start {
-        /* justify-content: flex-start; */
-        float: right;
+        justify-content: flex-start;
+        margin-right: 0;
+        margin-left: auto
     }
     .navbar-end {
         justify-content: flex-end;
-        margin-left: auto;
-        margin-right: 0;
+        margin-left: auto
     }
     .navbar-dropdown {
         background-color: #fff;

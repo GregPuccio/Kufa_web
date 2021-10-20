@@ -6822,9 +6822,8 @@ a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.i
         flex-shrink: 0
     }
     .navbar-start {
-        justify-content: flex-start;
-        margin-right: 0;
-        margin-left: auto
+        justify-content: flex-end;
+        margin-right: auto
     }
     .navbar-end {
         justify-content: flex-end;

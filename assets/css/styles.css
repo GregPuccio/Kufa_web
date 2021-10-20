@@ -6610,8 +6610,8 @@ html.has-navbar-fixed-bottom, body.has-navbar-fixed-bottom {
 
 .navbar-menu {
     display: none;
+    position: relative;
     margin-left: auto; 
-    margin-right: 0;
 }
 
 .navbar-item, .navbar-link {

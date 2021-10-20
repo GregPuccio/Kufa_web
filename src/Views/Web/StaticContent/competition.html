@@ -56,15 +56,15 @@
         </p>
 
         <p><i>An FIE Card is required for all international competitions. Usually, participation must be approved by
-            USA fencing as well.</i></p>
+                USA fencing as well.</i></p>
 
         <h4>Competitive divisions and types</h4>
 
-        <p><u>Youth 8, 10, 12, and 14, Cadet (Y16), & Junior (Y19)</u><br/>These competitions are age restricted.
+        <p><u>Youth 8, 10, 12, and 14, Cadet (Y16), & Junior (Y19)</u><br />These competitions are age restricted.
             Age eligibility is determined by birth year , not actual age at time of competition.</p>
 
-        <p>For example, a fencer who is born on January 1, 2006 is eligible to fence Y12 for the entire 2018-19
-            season but someone born December 31, 2005 must fence Y14, Cadet, Junior only.</p>
+        <p>For example, a fencer who is born on January 1, <span id="y12Year"></span> is eligible to fence Y12 for the entire <span id="thisYear"></span>-<span id="nextYear"></span>
+            season but someone born December 31, <span id="y13Year"></span> must fence Y14, Cadet, Junior only.</p>
 
         <h4>Senior Eligibility</h4>
         <p>Senior events of all types are generally open to fencers who turned 13 in the first year of any
@@ -100,12 +100,14 @@
         <h5>Gender mixing</h5>
         <p>Often at small or local competitions at any level, organizers will mix genders to create a larger field.
             This does not affect the rating of the competition, per se, but can make it a higher rated competition.
-            <i>Regional and national events are always gender specific.</i></p>
+            <i>Regional and national events are always gender specific.</i>
+        </p>
 
         <h4>How do I find tournaments ?</h4>
 
         <p>One may find local/division tournaments on <a href="http://www.askfred.net" target="_blank">www.askfred.net
-            <i class="fas fa-external-link-alt fa-sm"></i></a>. Often, regional and super youth tournaments are listed
+                <i class="fas fa-external-link-alt fa-sm"></i></a>. Often, regional and super youth tournaments are
+            listed
             there, but those listing <i>are for informational purposes only!!</i></p>
 
         <p>As of the 2018-19 season, any tournament at the regional or higher level must be entered via the USA
@@ -114,21 +116,24 @@
 
         <p>There is a master list of tournaments at this level on our
             <a href="/assets/documents/2018-2019_Competitions.pdf" target="_blank">website</a> and also at
-            <a href="https://cdn3.sportngin.com/attachments/document/798e-1655472/2018-19_Regional_Event_Schedule.pdf" target="_blank">
+            <a href="https://cdn3.sportngin.com/attachments/document/798e-1655472/2018-19_Regional_Event_Schedule.pdf"
+                target="_blank">
                 2018-2019 USA Fencing Regional Calendar. &nbsp;<i class="fas fa-external-link-alt fa-sm"></i></a>
         </p>
 
         <p><b>Note- this does not include the deadlines for entry which are usually several weeks before the
-            tournament.</b></p>
+                tournament.</b></p>
 
         <p><a href="https://www.usafencing.org/national-events-calendar" target="_blank"> USA Fencing National
-            Events Calendar <i class="fas fa-external-link-alt fa-sm"></i> </a></p>
+                Events Calendar <i class="fas fa-external-link-alt fa-sm"></i> </a></p>
 
         <h4>How do I qualify for National Championships?</h4>
         <p>There are different paths for different National Championships. Please refer to the following:</p>
         <p>
-            <a href="https://cdn3.sportngin.com/attachments/document/4dc5-1629959/2018-2019_Qualification_Tables.pdf" target="_blank">
-                How do I qualify for... <i class="fas fa-external-link-alt fa-sm"></i></a></p>
+            <a href="https://cdn3.sportngin.com/attachments/document/4dc5-1629959/2018-2019_Qualification_Tables.pdf"
+                target="_blank">
+                How do I qualify for... <i class="fas fa-external-link-alt fa-sm"></i></a>
+        </p>
 
         <h4>How do I get rated?</h4>
 
@@ -136,9 +141,20 @@
             overview.</p>
 
         <p><a href="https://askfred.net/Info/eventClass.php" target="_blank">USA Fencing Competition Rating Formulae
-            <i class="fas fa-external-link-alt fa-sm"></i></a></p>
+                <i class="fas fa-external-link-alt fa-sm"></i></a></p>
 
         <p><i>Youth events can be rated, but it is often difficult to get any rating higher than a D at a Y12 or
-            lower event.</i></p>
+                lower event.</i></p>
     </div>
 </div>
+<script>
+    date = new Date();
+    thisYear = date.getFullYear();
+    $('#thisYear').append(thisYear);
+    nextYear = date.getFullYear() + 1;
+    $('#nextYear').append(nextYear);
+    y12Year = date.getFullYear() - 12;
+    $('#y12Year').append(y12Year);
+    y13Year = date.getFullYear() - 13;
+    $('#y13Year').append(y13Year);
+</script>
